@@ -10,6 +10,7 @@ from yolov3_tf2.models import (
 from yolov3_tf2.dataset import transform_images, load_tfrecord_dataset
 from yolov3_tf2.utils import draw_outputs
 from flask import Flask, request, Response, jsonify, send_from_directory, abort,render_template
+from flask_sqlalchemy import SQLAlchemy
 import os
 import pickle
 
@@ -41,6 +42,13 @@ print('classes loaded')
 
 # Initialize Flask application
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db = SQLAlchemy(app)
+
+
+with app.app_context():
+ db.create_all()
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
