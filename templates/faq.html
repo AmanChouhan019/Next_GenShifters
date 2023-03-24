@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/faq_style.css') }}" />
+    <title>FAQ</title>
+  </head>
+  <body>
+    <h1>Frequently Asked Questions</h1>
+    <div class="faq-container">
+      <div class="faq active">
+        <h3 class="faq-title">
+          Is it safe to choose Next Generation Shifter's in view of the
+          pandemic?
+        </h3>
+
+        <p class="faq-text">
+          Our employees undergo covid test before every service.
+        </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          What are the services provided by Next Generation Shifter's?
+        </h3>
+        <p class="faq-text">
+          The services provided by us include home, office and vehicle
+          relocation.
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          How will Next Generation Shifter's ensure a smooth relocation
+          experience for me?
+        </h3>
+        <p class="faq-text">
+          The verified service partner will operate as per exclusive,
+          best-in-the-industry service terms to provide you with a premium
+          moving experience.
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          Is Next Generation Shifter's selling my information to anyone without
+          my consent?
+        </h3>
+        <p class="faq-text">
+          No. Your data is 100% under SPAM protection. Housing will only share
+          your information with our verified partner who in turn is not allowed
+          to share your data with any other vendor.
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="faq">
+        <h3 class="faq-title">
+          What if the movers fail to arrive on time for packing and moving?
+        </h3>
+        <p class="faq-text">
+          You will be eligible for a FLAT reimbursement even if the mover is
+          late by a minute than committed time.
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <script src="{{ url_for('static',filename='javascript/faq_script.js') }}"></script>
+  </body>
+</html>

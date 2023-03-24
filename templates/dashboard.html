@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form-section {
+            background-color: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            padding: 30px 50px;
+        }
+
+        .form-section .form-heading {
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 26px;
+            color: #182a88;
+        }
+
+        .form-section .form-caption {
+            margin-top: 8px;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #182a88;
+        }
+
+        .form-section .form-caption a {
+            color: #35c0d5;
+            text-decoration: none;
+        }
+
+        .form-section form {
+            margin: 25px 0;
+        }
+
+        .form-section form .input-div {
+            border: 1px solid #010101;
+            width: 350px;
+            height: 50px;
+            margin: 10px 0;
+            border-radius: 5px;
+            padding: 3px 10px;
+        }
+
+        .form-section form .input-div label {
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 10px;
+            display: block;
+            opacity: 0.8;
+            color: #182a88;
+        }
+
+        .form-section form .input-div input {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            font-family: "Josefin Sans", sans-serif;
+            font-weight: 400;
+            color: #010101;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        .form-section form .input-div select {
+            background-color: transparent;
+            width: 100%;
+            border: none;
+            margin-top: 5px;
+            font-family: "Roboto Slab", serif;
+            font-weight: 500;
+            color: #010101;
+        }
+
+        .form-section form .submit-btn {
+            border: none;
+            -webkit-transition: all 200ms cubic-bezier(0.39, 0.5, 0.15, 1.36);
+            transition: all 200ms cubic-bezier(0.39, 0.5, 0.15, 1.36);
+            display: block;
+            margin-top: 30px;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 20px 30px;
+            color: #182a88;
+            background-color: #ffffff;
+            -webkit-box-shadow: #182a88 0 0px 0px 2px inset;
+            box-shadow: #182a88 0 0px 0px 2px inset;
+            font-family: "Montserrat Alternates", sans-serif;
+        }
+
+        .form-section form .submit-btn:hover {
+            color: white;
+            -webkit-box-shadow: #182a88 0 80px 0px 2px inset;
+            box-shadow: #182a88 0 80px 0px 2px inset;
+        }
+
+        .form-section form .warning-text {
+            display: block;
+            font-family: "Roboto Slab", serif;
+            font-weight: 300;
+            font-size: 20px;
+            text-align: center;
+            color: #f72585;
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 917px) {
+            .form-section {
+                left: 60%;
+                top: 45%;
+                padding: 13px 23px;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .form-section form .input-div {
+                width: 300px;
+            }
+
+            .form-section form .submit-btn {
+                width: 300px;
+            }
+        }
+
+        @media only screen and (max-width: 425px) {
+            .form-section {
+                top: 120px;
+                left: 50%;
+                -webkit-transform: translate(-50%, 0);
+                transform: translate(-50%, 0);
+                border: none;
+                min-height: 500px;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+
+            .form-section .form-heading,
+            .form-section .form-caption {
+                position: relative;
+                left: -20px;
+            }
+        }
+
+        @media only screen and (max-width: 333px) {
+
+            .form-section .form-heading,
+            .form-section .form-caption {
+                left: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body style="background-image: url('/static/images/hero.jpg')">
+    <!-- <form id="dinu" class="form">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        <span></span>
+        <div class="button">
+            <button id="btn">Click me</button> 
+        </div>
+        <p id="dist">
+
+        </p>
+        <p id="time">
+
+        </p>
+    </form> -->
+
+    <section class="form-section" style="margin-top: 50px;">
+        <h1 class="form-heading">Calculate the distance</h1>
+        <p class="form-caption">
+            Enter the following details
+        </p>
+        <form id="dinu">
+            <div class="input-div">
+                <label for="padd">Pick Up Address </label>
+                <input type="text" class="email" id="padd" />
+            </div>
+            <div class="input-div">
+                <label for="dadd">Drop Address</label>
+                <input type="text" class="password" id="dadd" />
+            </div>
+            <div class="input-div">
+                <label for="image">Upload images below</label>
+                <input type="file" id="inpFile" />
+              </div>
+            <input type="submit" class="submit-btn" value="Submit" id="btn">
+            <!-- <div class="submit-btn">
+                <button id="btn">Click me</button> 
+            </div> -->
+
+            <p class="warning-text" id="dist">
+
+            </p>
+            <p class="warning-text" id="time">
+
+            </p>
+            <p class="warning-text" id="price">
+
+            </p>
+
+        </form>
+    </section>
+
+
+
+    <script>
+        var output = null
+        let count = 0
+        let fragile = 0
+        let non_fragile = 0
+        let major = 0
+        let truck = 0
+        let distance = 20
+        let result = 0
+        let bed = 0 
+        let diningtable = 0
+        let sofa = 0
+        let bench = 0 
+        let refrigerator = 0 
+        
+
+        const map1 = new Map();
+        const iterator1 = map1.values();
+        var output1 = null
+
+        function calculate(fragile,truck,distance,a){
+            
+
+            fragile = fragile * 100;
+            if(truck<=0.5){
+                // truck=70;  
+                //170
+                result=(distance*70)+(fragile);
+            }else if(truck>0.5 || truck<=1.5){
+                // truck=150;
+                //300
+                result=(distance*150)+(fragile);
+            }else if(truck>1.5){
+                // truck=200;
+                //450
+                result=(distance*200)+(fragile);
+            }
+
+            result = result+1000;
+
+            const price = document.getElementById('price')
+            price.innerHTML="The cost for your shiping is " + result;
+
+            // const list  = document.getElementById('list')
+            // list.innerHTML=a;
+            
+
+        }
+        function test() {
+            var url = "https://api.distancematrix.ai/maps/api/distancematrix/json?origins="
+
+
+            var a = document.getElementById("padd").value
+            var b = document.getElementById("dadd").value
+
+            url = url + a + "&destinations=" + b + "&departure_time=now&key=iYljzqXbtns4nhGNbn2E9eymxQcFO"
+
+            console.log(url)
+
+            const element1 = document.getElementById("dist")
+            const element2 = document.getElementById("time");
+
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    output1 = data
+                    element1.innerHTML = output1.rows[0].elements[0].distance.text
+                    distance = parseInt(output1.rows[0].elements[0].distance.text)
+                    element2.innerHTML = output1.rows[0].elements[0].duration.text
+                    console.log(data)
+                });
+
+        }
+
+        function truck_determination(){
+            var data = new FormData()
+            data.append('bed',bed)
+            data.append('diningtable',diningtable)
+            data.append('sofa',sofa)
+            data.append('bench',bench)
+            data.append('refrigerator',refrigerator)
+
+            // console.log(Array.from(data))
+
+            let fd = JSON.stringify(Array.from(data),'\t',2)
+
+            // console.log(fd)
+
+
+            fetch('/truck', {
+                "method": "POST",
+                "headers": {"Content-Type": "application/json"},
+                "body": fd,
+                })
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (text) {
+                        console.log('Truck:');
+                        console.log(text);
+                        output = text;
+                        truck = parseFloat(output.result)
+
+                        if(truck<=0.5){
+                            console.log(1)
+                        }else if(truck>0.5 || truck<=1.5){
+                            console.log(2)
+                        }else if(truck>1.5){
+                            console.log(3)
+                        }
+
+
+                        
+                    });
+
+
+        }
+        
+        
+        let btn = document.getElementById("dinu");
+        btn.addEventListener('submit', event => {
+            event.preventDefault()
+            var input = document.querySelector('input[type="file"]')
+            //test()
+            console.log("hello");
+                var data = new FormData()
+                data.append('images', input.files[0])
+                fetch('/detections', {
+                    method: 'POST',
+                    body: data,
+                    mode: 'no-cors',
+                })
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (text) {
+                        console.log('GET response:');
+                        console.log(text);
+                        output = text;
+
+                        let a = "The objects detected for moving are as follows: "
+                        for (let i = 0; i < output['response'][0]['detections'].length; i++) {
+
+                            count = count + 1
+
+                            if (map1.has(output['response'][0]['detections'][i].class)) {
+                                let b = map1.get(output['response'][0]['detections'][i].class)
+                                map1.set(output['response'][0]['detections'][i].class, b + 1)
+                            } else {
+                                map1.set(output['response'][0]['detections'][i].class, 1)
+                            }
+
+                            if (output['response'][0]['detections'][i].class == 'kite' ||
+                                output['response'][0]['detections'][i].class == 'bottle' ||
+                                output['response'][0]['detections'][i].class == 'cup' ||
+                                output['response'][0]['detections'][i].class == 'bowl' ||
+                                output['response'][0]['detections'][i].class == 'tvmonitor' ||
+                                output['response'][0]['detections'][i].class == 'vase' ||
+                                output['response'][0]['detections'][i].class == 'clock' ||
+                                output['response'][0]['detections'][i].class == 'wine glass' ||
+                                output['response'][0]['detections'][i].class == 'pottedplant') {
+                                fragile = fragile + 1
+                            }
+
+                            if(output['response'][0]['detections'][i].class == 'bed'){
+                                    bed = bed + 1;
+                            }else if(output['response'][0]['detections'][i].class == 'diningtable'){
+                                diningtable=diningtable+1;
+                            }else if(output['response'][0]['detections'][i].class == 'sofa'){
+                                sofa=sofa+1;
+                            }else if(output['response'][0]['detections'][i].class == 'bench'){
+                                bench=bench+1;
+                            }else if(output['response'][0]['detections'][i].class == 'refrigerator'){
+                                refrigerator=refrigerator+1;
+                            }
+
+                            if(output['response'][0]['detections'][i].class ==' person'){
+                                count=count-1;
+                            }
+
+                        }
+
+                        non_fragile = count - fragile;
+                        for (let [key, value] of map1) {
+                            a = a + value + key + " "
+                        }
+                        truck_determination()
+                        calculate(fragile,truck,distance);
+                        console.log(a)
+                        console.log('The number of fragile items are ' + fragile)
+                    });
+
+            
+            
+
+        }); 
+    </script>
+</body>
+
+</html>

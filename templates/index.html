@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <title>IT Elites</title>
+    <!--Font awesome CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}" />
+    <link rel="icon" href="{{ url_for('static',filename='images/favicon.ico') }}" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+          </div>
+          <a href="" class="logo">
+            <img src="{{ url_for('static',filename='images/logo-rosa.png') }}" alt="" />
+          </a>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="" class="nav-link active">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ url_for('about')}}" class="nav-link">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ url_for('gallery')}}" class="nav-link">Gallery</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ url_for('testimonial')}}" class="nav-link"
+                >Testimonials</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('faq')}}" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('dimensions')}}" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="container">
+        <h2 class="sub-headline">
+          <span class="first-letter">W</span>elcome to
+        </h2>
+        <h1 class="headline">NEXT GEN SHIFTERS</h1>
+        <div class="headline-description">
+          <div class="separator">
+            <div class="line line-left"></div>
+            <div class="asterisk"><i class="fas fa-asterisk"></i></div>
+            <div class="line line-right"></div>
+          </div>
+          <div class="single-animation">
+            <h5>The new way of moving</h5>
+
+           <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  PRICING MODEL
+</button>
+
+<!-- Modal -->
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 id="exampleModalLabel">PRICING MODEL</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <p>Pricing for our model will be calculated using three different costs and is represented using the following formula:</p> 
+         <h3><i><b>Final Cost = Truck + Fragile Items  + Labours </b></i></h3>       
+ <p>Each truck type in kilometres between the origin address and destination address. This cost is represented as the Truck Cost</p>
+ <h3><i><b>Truck Cost = Per Kilometre Cost of Truck Distance </b></i></h3>
+<p>For every fragile item an extra Rs100 is charged for the delicate packing and movement of the fragile items. This charge is included as the fragile items cost</p>
+<h3><b><i>Fragile Items Cost = No of Fragile Items x 100</i></b></h3>
+<p>
+  And finally, 
+</p>
+<h3><i><b>An additional Rs 1000 are charged as the labor cost for the packing and unpacking of the goods from the truck. </b></i></h3>
+
+
+
+
+
+      </div>
+     
+    </div>
+  </div>
+  </div>
+    </section>
+
+    
+
+    <script src="{{ url_for('static',filename='javascript/index.js') }}"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style1.css') }}" />
+    <title>Gallery</title>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="left-slide">
+        <div style="background-color: #0c4f5f">
+          <h1>MATERIALS</h1>
+          <p><em>(Packaging materials used by us)</em></p>
+        </div>
+        <div style="background-color: #631111">
+          <h1>VEHICLE</h1>
+          <p><em>(Your vehicle our responsibility!)</em></p>
+        </div>
+        <div style="background-color: #252e33">
+          <h1>OFFICE RELOCATION</h1>
+          <p><em>(Fragile items handled with utmost care)</em></p>
+        </div>
+        <div style="background-color: #d88322">
+          <h1>HOME RELOCATION</h1>
+          <p><em>(Shifting of furniture without any scratches)</em></p>
+        </div>
+      </div>
+      <div class="right-slide">
+        <div
+          style="
+            background-image: url('https://i.pinimg.com/originals/9a/41/6e/9a416e80df2e1bc9e00218140c988d5f.jpg');
+          "
+        ></div>
+        <div
+          style="
+            background-image: url('https://trucksuvidha.com/Images/office-shifting.jpg');
+          "
+        ></div>
+        <div
+          style="
+            background-image: url('https://3.imimg.com/data3/JF/VT/MY-10531387/car-carrier-services-500x500.jpg');
+          "
+        ></div>
+        <div
+          style="
+            background-image: url('https://img1.exportersindia.com/product_images/bc-full/dir_119/3566732/packing-material-1485343698-2700662.jpg');
+          "
+        ></div>
+      </div>
+      <div class="action-buttons">
+        <button class="down-button">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+        <button class="up-button">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='javascript/script1.js') }}"></script>
+  </body>
+</html>

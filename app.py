@@ -1,3 +1,4 @@
+import subprocess
 import time
 from absl import app, logging
 import cv2
@@ -10,6 +11,9 @@ from yolov3_tf2.dataset import transform_images, load_tfrecord_dataset
 from yolov3_tf2.utils import draw_outputs
 from flask import Flask, request, Response, jsonify, send_from_directory, abort,render_template
 import os
+import pickle
+
+model = pickle.load(open('knn.pkl','rb'))
 
 # customize your API through the following parameters
 classes_path = './data/labels/coco.names'
@@ -38,9 +42,50 @@ print('classes loaded')
 # Initialize Flask application
 app = Flask(__name__)
 
-@app.route('/',methods=['POST','GET'])
+@app.route('/',methods=['GET', 'POST'])
 def home():
-    return ("First Page")
+    return render_template('index.html')
+
+@app.route('/gallery',methods=['GET','POST'])
+def gallery():
+    return render_template('gallery.html')
+
+@app.route('/testimonial',methods=['GET','POST'])
+def testimonial():
+    return render_template('testimonial.html')
+
+@app.route('/faq',methods=['GET','POST'])
+def faq():
+    return render_template('faq.html')
+
+@app.route('/about',methods=['GET','POST'])
+def about():
+    return render_template('about.html')
+
+@app.route('/dimensions',methods=['GET','POST'])
+def dimensions():
+    return render_template('dashboard.html')
+
+@app.route('/truck',methods=['GET','POST'])
+def det_truck():
+    data = request.get_json()
+    
+    
+
+    bed = int(data[0][1])
+    refrigerator =int(data[4][1]) 
+    sofa = int(data[2][1])
+    bench = int(data[3][1])
+    diningtable= int(data[1][1])
+
+    arr = np.array([bed,diningtable,sofa,bench,refrigerator])
+    arr = arr.reshape(1,5)
+
+
+    perdictions = model.predict(arr)[0]
+
+
+    return jsonify({'result':perdictions})
 
 # API that returns JSON with classes found in images
 @app.route('/detections', methods=['POST'])
@@ -100,42 +145,6 @@ def get_detections():
     except FileNotFoundError:
         abort(404)
 
-# API that returns image with detections on it
-@app.route('/image', methods= ['POST'])
-def get_image():
-    image = request.files["images"]
-    image_name = image.filename
-    image.save(os.path.join(os.getcwd(), image_name))
-    img_raw = tf.image.decode_image(
-        open(image_name, 'rb').read(), channels=3)
-    img = tf.expand_dims(img_raw, 0)
-    img = transform_images(img, size)
 
-    t1 = time.time()
-    boxes, scores, classes, nums = yolo(img)
-    t2 = time.time()
-    print('time: {}'.format(t2 - t1))
-
-    print('detections:')
-    for i in range(nums[0]):
-        print('\t{}, {}, {}'.format(class_names[int(classes[0][i])],
-                                        np.array(scores[0][i]),
-                                        np.array(boxes[0][i])))
-    img = cv2.cvtColor(img_raw.numpy(), cv2.COLOR_RGB2BGR)
-    img = draw_outputs(img, (boxes, scores, classes, nums), class_names)
-    cv2.imwrite(output_path + 'detection.jpg', img)
-    print('output saved to: {}'.format(output_path + 'detection.jpg'))
-    
-    # prepare image for response
-    _, img_encoded = cv2.imencode('.png', img)
-    response = img_encoded.tostring()
-    
-    #remove temporary image
-    os.remove(image_name)
-
-    try:
-        return Response(response=response, status=200, mimetype='image/png')
-    except FileNotFoundError:
-        abort(404)
 if __name__ == '__main__':
     app.run(debug=True, host = '0.0.0.0', port=5000)
