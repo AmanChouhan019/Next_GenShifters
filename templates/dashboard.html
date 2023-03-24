@@ -224,7 +224,7 @@
         let fragile = 0
         let non_fragile = 0
         let major = 0
-        let truck = 0
+        var truck = 0
         let distance = 20
         let result = 0
         let bed = 0 
@@ -238,7 +238,8 @@
         const iterator1 = map1.values();
         var output1 = null
 
-        function calculate(fragile,truck,distance,a){
+        function calculate(fragile,truck,distance){
+
             
 
             fragile = fragile * 100;
@@ -250,7 +251,7 @@
                 // truck=150;
                 //300
                 result=(distance*150)+(fragile);
-            }else if(truck>1.5){
+            }else{
                 // truck=200;
                 //450
                 result=(distance*200)+(fragile);
@@ -319,18 +320,24 @@
                         console.log(text);
                         output = text;
                         truck = parseFloat(output.result)
+                        console.log(truck)
 
-                        if(truck<=0.5){
-                            console.log(1)
-                        }else if(truck>0.5 || truck<=1.5){
-                            console.log(2)
-                        }else if(truck>1.5){
-                            console.log(3)
-                        }
+                        // if(truck<=0.5){
+                        //     console.log(1)
+                        //     truck=1
+                        // }else if(truck>0.5 && truck<=1.5){
+                        //     console.log(2)
+                        //     truck=2
+                        // }else if(truck>1.5){
+                        //     console.log(3)
+                        //     truck=3
+                        // }
 
 
                         
                     });
+
+            
 
 
         }
