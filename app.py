@@ -8,7 +8,7 @@ from yolov3_tf2.models import (
 )
 from yolov3_tf2.dataset import transform_images, load_tfrecord_dataset
 from yolov3_tf2.utils import draw_outputs
-from flask import Flask, request, Response, jsonify, send_from_directory, abort
+from flask import Flask, request, Response, jsonify, send_from_directory, abort,render_template
 import os
 
 # customize your API through the following parameters
@@ -37,6 +37,10 @@ print('classes loaded')
 
 # Initialize Flask application
 app = Flask(__name__)
+
+@app.route('/',methods=['POST','GET'])
+def home():
+    return ("First Page")
 
 # API that returns JSON with classes found in images
 @app.route('/detections', methods=['POST'])
