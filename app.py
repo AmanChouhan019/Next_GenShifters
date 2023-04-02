@@ -1,4 +1,5 @@
 import subprocess
+import datetime
 import time
 from absl import app, logging
 import cv2
@@ -76,10 +77,7 @@ def dimensions():
 
 @app.route('/truck',methods=['GET','POST'])
 def det_truck():
-    data = request.get_json()
-    
-    
-
+    data = request.get_json()    
     bed = int(data[0][1])
     refrigerator =int(data[4][1]) 
     sofa = int(data[2][1])
@@ -94,6 +92,8 @@ def det_truck():
 
 
     return jsonify({'result':perdictions})
+
+
 
 # API that returns JSON with classes found in images
 @app.route('/detections', methods=['POST'])

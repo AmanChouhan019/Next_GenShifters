@@ -114,6 +114,30 @@
             margin-top: 10px;
         }
 
+        .button {
+             border: none;
+            -webkit-transition: all 200ms cubic-bezier(0.39, 0.5, 0.15, 1.36);
+            transition: all 200ms cubic-bezier(0.39, 0.5, 0.15, 1.36);
+            display: block;
+            margin-top: 30px;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 20px 30px;
+            color: #182a88;
+            background-color: #ffffff;
+            -webkit-box-shadow: #182a88 0 0px 0px 2px inset;
+            box-shadow: #182a88 0 0px 0px 2px inset;
+            font-family: "Montserrat Alternates", sans-serif;
+        }
+
+        .button:hover {
+            color: white;
+            -webkit-box-shadow: #182a88 0 80px 0px 2px inset;
+            box-shadow: #182a88 0 80px 0px 2px inset;
+        }
+
         @media only screen and (max-width: 917px) {
             .form-section {
                 left: 60%;
@@ -188,20 +212,19 @@
         <form id="dinu">
             <div class="input-div">
                 <label for="padd">Pick Up Address </label>
-                <input type="text" class="email" id="padd" />
+                <input type="text" class="add" id="padd" />
             </div>
             <div class="input-div">
                 <label for="dadd">Drop Address</label>
-                <input type="text" class="password" id="dadd" />
+                <input type="text" class="add" id="dadd" />
             </div>
+            
             <div class="input-div">
                 <label for="image">Upload images below</label>
                 <input type="file" id="inpFile" />
               </div>
-            <input type="submit" class="submit-btn" value="Submit" id="btn">
-            <!-- <div class="submit-btn">
-                <button id="btn">Click me</button> 
-            </div> -->
+            <input type="submit" class="submit-btn" value="Continue" id="btn">
+            
 
             <p class="warning-text" id="dist">
 
@@ -212,14 +235,17 @@
             <p class="warning-text" id="price">
 
             </p>
-
         </form>
+        
+
+
     </section>
 
 
 
     <script>
         var output = null
+        let turck_cost = 0
         let count = 0
         let fragile = 0
         let non_fragile = 0
@@ -245,16 +271,16 @@
             fragile = fragile * 100;
             if(truck<=0.5){
                 // truck=70;  
-                //170
-                result=(distance*70)+(fragile);
+                turck_cost=(distance*70);//170
+                result=turck_cost+(fragile);
             }else if(truck>0.5 || truck<=1.5){
                 // truck=150;
-                //300
-                result=(distance*150)+(fragile);
+                turck_cost=(distance*150)
+                result=turck_cost+(fragile);
             }else{
                 // truck=200;
-                //450
-                result=(distance*200)+(fragile);
+                turck_cost=(distance*200)
+                result=turck_cost+(fragile);
             }
 
             result = result+1000;
@@ -274,7 +300,7 @@
             var a = document.getElementById("padd").value
             var b = document.getElementById("dadd").value
 
-            url = url + a + "&destinations=" + b + "&departure_time=now&key=iYljzqXbtns4nhGNbn2E9eymxQcFO"
+            url = url + a + "&destinations=" + b + "&departure_time=now&key=qhLyFogZJr0lThLrIbIHlTqwwPvK2"
 
             console.log(url)
 
@@ -321,20 +347,6 @@
                         output = text;
                         truck = parseFloat(output.result)
                         console.log(truck)
-
-                        // if(truck<=0.5){
-                        //     console.log(1)
-                        //     truck=1
-                        // }else if(truck>0.5 && truck<=1.5){
-                        //     console.log(2)
-                        //     truck=2
-                        // }else if(truck>1.5){
-                        //     console.log(3)
-                        //     truck=3
-                        // }
-
-
-                        
                     });
 
             
@@ -347,7 +359,7 @@
         btn.addEventListener('submit', event => {
             event.preventDefault()
             var input = document.querySelector('input[type="file"]')
-            //test()
+            test()
             console.log("hello");
                 var data = new FormData()
                 data.append('images', input.files[0])
@@ -419,6 +431,8 @@
             
 
         }); 
+
+        
     </script>
 </body>
 
