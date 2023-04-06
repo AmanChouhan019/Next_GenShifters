@@ -17,6 +17,8 @@ import pickle
 
 model = pickle.load(open('knn.pkl','rb'))
 
+
+
 # customize your API through the following parameters
 classes_path = './data/labels/coco.names'
 weights_path = './weights/yolov3.tf'
@@ -47,9 +49,40 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
+class User(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    username=db.Column(db.String(80),unique=True,nullable=False)
+    password=db.Column(db.String(80),nullable=False)
+    def __repr__(self):
+        return '<User %r>' % self.username
 
 with app.app_context():
  db.create_all()
+
+
+
+
+
+# @app.route('/',methods=['GET','POST'])
+# def first():
+#     return render_template('first.html')
+
+# @app.route('/login',methods=['GET','POST'])
+# def login():
+#     return render_template('login.html')
+
+# @app.route('/register',methods=['GET','POST'])
+# def register():
+    # if request.method=='POST':
+    #     username=request.form.get('username')
+    #     password=request.form.get('password')
+    #     user = User(username=username,password=password)
+#         db.session.add(user)
+#         db.session.commit()
+#         return ("Done")
+
+
+#     return render_template('register.html')
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
@@ -94,6 +127,47 @@ def det_truck():
     return jsonify({'result':perdictions})
 
 
+
+@app.route('/part1',methods=['GET','POST'])
+def part1():
+    data=request.get_json()
+    global pa
+    pa=data[0][1]
+    global da 
+    da=data[1][1]
+
+    return jsonify({'status':'success'})
+
+@app.route('/part2',methods=['GET','POST'])
+def part2():
+    data = request.get_json()
+    global fragile
+    fragile=data[0][1]
+    global truck
+    truck=data[1][1]
+    global result
+    result=data[2][1]
+    global distance
+    distance=data[3][1]
+    global date 
+    date=data[4][1]
+
+    return jsonify({'status':'success'})
+
+@app.route('/bill',methods=['GET','POST'])
+def bill():
+    
+    pa1 = pa
+    da1 = da
+    distance1 = distance
+    truck1 = truck
+    fragile1 = fragile
+    result1 = result
+    date1 = date
+    bdate = datetime.datetime.now()
+    pdate = bdate.strftime("%y-*m-*d")
+
+    return render_template('bill.html',pa=pa1,da=da1,pdate=pdate,date=date1,distance=distance1,fragile=fragile1,truck=truck1,result=result1)
 
 # API that returns JSON with classes found in images
 @app.route('/detections', methods=['POST'])

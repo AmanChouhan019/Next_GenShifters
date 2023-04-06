@@ -218,7 +218,10 @@
                 <label for="dadd">Drop Address</label>
                 <input type="text" class="add" id="dadd" />
             </div>
-            
+            <div class="input-div">
+                <label for="dadd">Date</label>
+                <input type="date" class="add" id="date" />
+            </div>
             <div class="input-div">
                 <label for="image">Upload images below</label>
                 <input type="file" id="inpFile" />
@@ -235,6 +238,10 @@
             <p class="warning-text" id="price">
 
             </p>
+        </form>
+        <form methods='POST' action='/bill'>
+            
+            <input type="submit" class="submit-btn" value="Continue" id="btn">
         </form>
         
 
@@ -259,6 +266,7 @@
         let bench = 0 
         let refrigerator = 0 
         
+        
 
         const map1 = new Map();
         const iterator1 = map1.values();
@@ -266,21 +274,24 @@
 
         function calculate(fragile,truck,distance){
 
-            
-
+            var date = document.getElementById('date').value
+            var t = 1
             fragile = fragile * 100;
             if(truck<=0.5){
                 // truck=70;  
                 turck_cost=(distance*70);//170
                 result=turck_cost+(fragile);
+                t=result;
             }else if(truck>0.5 || truck<=1.5){
                 // truck=150;
                 turck_cost=(distance*150)
                 result=turck_cost+(fragile);
+                t=result;
             }else{
                 // truck=200;
                 turck_cost=(distance*200)
                 result=turck_cost+(fragile);
+                t=result;
             }
 
             result = result+1000;
@@ -288,34 +299,73 @@
             const price = document.getElementById('price')
             price.innerHTML="The cost for your shiping is " + result;
 
-            // const list  = document.getElementById('list')
-            // list.innerHTML=a;
+            var data2 = new FormData()
+            data2.append('fragile',fragile)
+            data2.append('truck',t)
+            data2.append('result',result)
+            data2.append('distance',distance)
+            data2.append('date',date)
+
+            let f = JSON.stringify(Array.from(data2),'\t',2)
+
+            // console.log(f)
+
+            fetch('/part2', {
+                "method": "POST",
+                "headers": {"Content-Type": "application/json"},
+                "body": f,
+                })
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (text) {
+                        console.log(text);
+                    });
             
 
         }
         function test() {
-            var url = "https://api.distancematrix.ai/maps/api/distancematrix/json?origins="
+            // var url = "https://api.distancematrix.ai/maps/api/distancematrix/json?origins="
 
 
             var a = document.getElementById("padd").value
             var b = document.getElementById("dadd").value
 
-            url = url + a + "&destinations=" + b + "&departure_time=now&key=qhLyFogZJr0lThLrIbIHlTqwwPvK2"
+            // url = url + a + "&destinations=" + b + "&departure_time=now&key=qhLyFogZJr0lThLrIbIHlTqwwPvK2"
 
-            console.log(url)
+            // console.log(url)
 
-            const element1 = document.getElementById("dist")
-            const element2 = document.getElementById("time");
+            // const element1 = document.getElementById("dist")
+            // const element2 = document.getElementById("time");
 
-            fetch(url)
-                .then((response) => response.json())
-                .then((data) => {
-                    output1 = data
-                    element1.innerHTML = output1.rows[0].elements[0].distance.text
-                    distance = parseInt(output1.rows[0].elements[0].distance.text)
-                    element2.innerHTML = output1.rows[0].elements[0].duration.text
-                    console.log(data)
-                });
+            // fetch(url)
+            //     .then((response) => response.json())
+            //     .then((data) => {
+            //         output1 = data
+            //         element1.innerHTML = output1.rows[0].elements[0].distance.text
+            //         distance = parseInt(output1.rows[0].elements[0].distance.text)
+            //         element2.innerHTML = output1.rows[0].elements[0].duration.text
+            //         console.log(data)
+            //     });
+
+            var data1 = new FormData()
+            data1.append('pa',a)
+            data1.append('da',b)
+            data1.append('distance',distance)
+
+            let fdd = JSON.stringify(Array.from(data1),'\t',2)
+
+            // console.log(fdd)
+
+            fetch('/part1', {
+                "method": "POST",
+                "headers": {"Content-Type": "application/json"},
+                "body": fdd,
+                })
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (text) {
+                        console.log(text);
+                    });
 
         }
 
@@ -428,8 +478,26 @@
                     });
 
             
-            
+            // const a = document.getElementById('pa')
+            // a.innerHTML=document.getElementById("padd").value
 
+            // const b = document.getElementById('da')
+            // b.innerHTML=document.getElementByid("dadd").value
+
+            // const c =document.getElementById('distance') 
+            // c.innerHTML=distance
+
+            // const d = document.getElementById('fragile')
+            // d.innerHTML=fragile
+
+            // const e =document.getElementById('result')
+            // e.innerHTML=result
+
+            // const f =document.getElementById('truck')
+            // f.innerHTML=truck
+
+            // const g = document.getElementById('date')
+            // g=document.getElementById('date').value
         }); 
 
         

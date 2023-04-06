@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login1.css') }}" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Welcome to Next Gen Shifters</h1>
+      <img src="{{ url_for('static',filename='images/ngs1.jpg') }}" alt="logo">
+      
+      <div class="member">
+        Already a member? <a href="{{ url_for('login')}}">Login In</a>
+      </div>
+      <div class="member">
+        Don't have an account? <a href="{{ url_for('register')}}">Register</a>
+     </div>
+    </div>
+  </body>
+</html>

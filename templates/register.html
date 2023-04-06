@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-</head>
-<body>
-    <h1>Register Page</h1>
-
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
-    </form>
-
-    <a href="{{url_for('login')}}">Already have an account? Sign in</a>
-</body>
+  <head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Sign up</h1>
+      <form  methods='POST' action='/register'>
+        <input type="text" placeholder="Username" name="username" id="">
+        <input type="text" placeholder="Password" name="password">
+        <input type="submit" placeholder="submit" class="btn">
+      </form>
+      <!-- <button >
+        Sign Up
+      </button> -->
+      <div class="member">
+        Already a member? <a href="{{ url_for('login')}}">Login In</a>
+      </div>
+    </div>
+  </body>
 </html>

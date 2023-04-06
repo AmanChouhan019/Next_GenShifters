@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-</head>
-<body>
-    <h1>Login Page</h1>
-
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
-    </form>
-
-    <a href="{{url_for('register')}}">Don't have an account ? Sign Up</a>
-</body>
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Sign in</h1>
+      <form action="">
+        <input type="text" placeholder="Username" name="" id="">
+        <input type="text" placeholder="Password">
+      </form>
+      <button>
+        Sign Up
+      </button>
+      <div class="member">
+         Don't have an account? <a href="{{ url_for('register')}}">Register</a>
+      </div>
+    </div>
+  </body>
 </html>
